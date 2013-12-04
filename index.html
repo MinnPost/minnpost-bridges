@@ -135,6 +135,31 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
       .maptitle-inner {
         padding: .25em .5em;
       }
+      
+        //map legend styles
+
+	  .maplegend {float:left;}
+	  
+	  .maplegend h4 {font-size:1.3em;line-height:1.6em;}
+  
+	  .maplegend ul {
+		list-style-type:none; 
+		//width:30%; 
+		float:left;
+	  }
+  
+	  .maplegend li {
+		margin-bottom:3px;
+		list-style-type:none;
+	  }
+  
+	  .maplegend li div {
+		width:13px;
+		float:left;
+		margin-right:5px;
+		border-radius:13px;
+	  }
+      
     </style>
     <!--[if lte IE 8]>
       <style type="text/css">
@@ -184,10 +209,40 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
           <div id="mapA"></div>
           <div id="mapB"></div>
         </div>
+        
+        <div class="caption maplegend">
+
+			<h4>Legend</h4>
+
+			<ul style="margin-right:15px;">
+			  <b>Bridge condition</b>
+			  <li style="margin-top:7px;"><div style="background-color:#005C1D;">&nbsp;</div> Good</li>
+			  <li><div style="background-color:#76D13D;">&nbsp;</div> Satisfactory</li>
+		      <li><div style="background-color:#FBC72D;">&nbsp;</div> Fair</li>
+			  <li><div style="background-color:#B42D04;">&nbsp;</div> Poor</li>
+			</ul>
+
+			<ul>
+			  <b>Decade built</b>
+			  <li style="margin-top:7px;"><div style="background-color:#081D58;">&nbsp;</div> 1880s to 1920s</li>
+			  <li><div style="background-color:#253494;">&nbsp;</div> 1930s</li>
+			  <li><div style="background-color:#225EA8;">&nbsp;</div> 1940s</li>
+			  <li><div style="background-color:#1D91C0;">&nbsp;</div> 1950s</li>
+			  <li><div style="background-color:#41B6C4;">&nbsp;</div> 1960s</li>
+			</ul>
+
+			<ul>
+			  <b>&nbsp;</b>
+			  <li style="margin-top:7px;"><div style="background-color:#7FCDBB;">&nbsp;</div> 1970s</li>
+			  <li><div style="background-color:#C7E9B4;">&nbsp;</div> 1980s</li>
+			  <li><div style="background-color:#EDF8B1;">&nbsp;</div> 1990s</li>
+			  <li><div style="background-color:#FFFFD9;">&nbsp;</div> 2000s and 2010s</li>
+			</ul>
+		</div>
 
 
 		<div class="fp-special">
-		  <p></p>
+		  <p style="clear:both;"></p>
 		  <p>In general, Minnesota’s bridges are in good shape, with structural conditions within MnDOT’s targets: 86 percent of bridges are in Good or Satisfactory condition, 12 percent are Fair, and 2 percent are rated Poor. Just because a bridge is in "Poor" condition, it doesn't mean it's unsafe to drive on — it  means the bridge is a higher priority for serious maintenance, also taking into consideration other factors, like the volume of traffic that passes over the bridge. MnDOT projects sufficient funding to meet structural goals for the next 10 years. Beyond that, however, the agency sees expenses exceeding revenues and, absent new funding, will need to make choices about which bridge repairs to prioritize.</p>
 
 		  <p>Of particular concern is the coming wave of maintenance needed for bridges built during the 1960s Interstate build-out. The 1960s saw the greatest number of bridges constructed of any decade so far — 857 bridges were constructed in those years, 22 percent of all bridges in the state. As these bridges age, their maintenance requirements will increase — as will the costs associated. </p>
