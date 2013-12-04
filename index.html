@@ -204,37 +204,23 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
 
     <!--
       JS Files.
-
-      Utilize RequireJS to for better dependency management;
-      we manually include the config file to ensure the application
-      is available below.  And we manually start the application
-      below so that we can set certain options about where data
-      is coming from.
-
-      The bits around the inclusion of the libraries
-      provides a temporary hack around jQuery so we
-      can use a newer version.
     -->
-    <script type="text/javascript">
-      // Hack around existing jQuery
-      if (typeof window.jQuery != 'undefined') {
-        window._jQuery = window.jQuery;
-        window._$ = window.$;
-      }
-    </script>
-
     <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
 
     <script type="text/javascript">
       (function($) {
         var mapA;
         var mapB;
-        window.onload = function init(){
+        var mapOptions = {
+          minZoom: 6,
+          maxZoom: 12,
+          scrollWheelZoom: true
+        };
 
+        $(document).ready(function() {
           //load map layers
-
-          mapA = L.mapbox.map('mapA','minnpost.map-wi88b700,minnpost.ijcyp66r', { minZoom: 6, maxZoom: 12, scrollWheelZoom: true})
-          mapB = L.mapbox.map('mapB','minnpost.map-wi88b700,minnpost.atfq1tt9', { minZoom: 6, maxZoom: 12, scrollWheelZoom: true})
+          mapA = L.mapbox.map('mapA', 'minnpost.map-wi88b700,minnpost.ijcyp66r', mapOptions);
+          mapB = L.mapbox.map('mapB', 'minnpost.map-wi88b700,minnpost.atfq1tt9', mapOptions);
 
           // set move events to update the other map when we move this one
           mapA.on('moveend', function(e) {
@@ -254,28 +240,21 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
             updateCursor(e, -(window.innerWidth / 2));
           }
 
-          function updateCursor(e, offset){
+          function updateCursor(e, offset) {
             // the 15 is here to position to the center of the cursor icon in, not the top left of the cursor image
-            $('cursor').top = e.clientY - 15;
-            $('cursor').left = offset + e.clientX - 15;
+            $('#cursor').top = e.clientY - 15;
+            $('#cursor').left = offset + e.clientX - 15;
 
-            $('cursor').setStyle({
-                left: $('cursor').left,
-                top: $('cursor').top
-              });
+            $('#cursor').css({
+              left: $('#cursor').left,
+              top: $('#cursor').top
+            });
           }
-          document.getElementById('mapA').onmousemove = updateCursorA;
-          document.getElementById('mapB').onmousemove = updateCursorB;
-        }
-      })(jQuery);
-    </script>
 
-    <script type="text/javascript">
-      // Hack back in the original jQuery
-      if (typeof window._jQuery != 'undefined') {
-        window.jQuery = window._jQuery;
-        window.$ = window._$;
-      }
+          $('#mapA').mousemove(updateCursorA);
+          $('#mapB').mousemove(updateCursorB);
+        });
+      })(jQuery);
     </script>
   </div>
 
