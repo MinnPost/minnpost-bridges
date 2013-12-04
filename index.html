@@ -76,7 +76,7 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
   <div class="node-body fieldlayout node-field-body">
     <!-- Application and libraries CSS -->
     <style type="text/css">
-      @import url('http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css');
+      @import url('http://api.tiles.mapbox.com/mapbox.js/v1.5.1/mapbox.css');
 
       /* Cleardifx: http://nicolasgallagher.com/micro-clearfix-hack/ */
       .cf:before,
@@ -138,7 +138,16 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
     </style>
     <!--[if lte IE 8]>
       <style type="text/css">
-        @import url('http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css');
+        @import url('http://api.tiles.mapbox.com/mapbox.js/v1.5.1/mapbox.ie.css');
+
+        .ie-upgrade-note {
+          margin: 1em 1em;
+          padding: 1em;
+          font-size: .75em;
+          border: 1px solid #222222;
+          background-color: #E2E2E2;
+          color: #222222;
+        }
       </style>
     <![endif]-->
 
@@ -204,7 +213,7 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
     <!--
       JS Files.
     -->
-    <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <script type="text/javascript" src="http://api.tiles.mapbox.com/mapbox.js/v1.5.1/mapbox.js"></script>
 
     <script type="text/javascript">
       (function($) {
