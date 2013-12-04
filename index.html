@@ -163,6 +163,20 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
   		  border-radius:13px;
   	  }
 
+
+      @media screen and (max-width: 500px) {
+        #mapA,
+        #mapB {
+          width: 100%;
+          float: none;
+          height: 300px;
+          border: none;
+        }
+
+        #mapA {
+          border-bottom: 2px solid #454545;
+        }
+      }
     </style>
     <!--[if lte IE 8]>
       <style type="text/css">
@@ -278,7 +292,7 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
         var mapOptions = {
           minZoom: 6,
           maxZoom: 12,
-          scrollWheelZoom: true,
+          scrollWheelZoom: false,
           maxBounds: [[50.317408112618686, -88.70361328125], [42.779275360241904, -99.25048828124999]]
         };
 
