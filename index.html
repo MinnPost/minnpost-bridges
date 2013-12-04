@@ -78,36 +78,31 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
     <style type="text/css">
       @import url('http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css');
 
+      /* Cleardifx: http://nicolasgallagher.com/micro-clearfix-hack/ */
+      .cf:before,
+      .cf:after {
+          content: " "; /* 1 */
+          display: table; /* 2 */
+      }
+      .cf:after {
+        clear: both;
+      }
+      .cf {
+        *zoom: 1;
+      }
+
+      .interactive-container  {
+        max-width: 960px;
+        margin: 0 auto;
+        padding-top: 1em;
+      }
+
       .fp-special {
-        position:relative;
-        top:0px;
-        width: 34em;
-        font-size:1.2em;
+        width: 100%;
+        max-width: 34em;
+        margin:  0 auto 1em auto;
+        font-size: 1.2em;
         line-height: 1.6em;
-        margin: 10px auto 10px auto;
-      }
-
-      #map-wrapper {
-        width:965px;
-        position:relative;
-        height:500px;
-        margin:auto;
-      }
-
-      /* set the two maps side by side */
-      #mapA {
-        width: 50%;
-        height: 100%;
-      }
-
-      #mapB {
-        width: 50%;
-        height: 100%;
-        left: 50%;
-        top: 0;
-        position: absolute;
-        border-left:1px solid #999;
-
       }
 
       /* the cursor */
@@ -116,26 +111,30 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
         z-index: 100;
       }
 
-      /* map title bar along the top */
+      /* Maps */
+      #map-wrapper {
+        width: 100%;
+        margin: 0 auto 1em auto;
+      }
+
+      #mapA,
+      #mapB {
+        width: 50%;
+        float: left;
+        height: 500px;
+      }
+
       .maptitle {
-        position: absolute;
-        z-index: 2;
-        opacity: 0.75;
-        top: 0px;
+        width: 50%;
+        float: left;
         text-align: center;
         font-weight: bold;
-        font-family:helvetica;
+        font-family: helvetica;
         background-color: white;
       }
 
-      /* position the individual title bars */
-      #mapATitle {
-        width: 50%;
-      }
-
-      #mapBTitle {
-        width: 50%;
-        left: 50%;
+      .maptitle-inner {
+        padding: .25em .5em;
       }
     </style>
     <!--[if lte IE 8]>
@@ -174,11 +173,17 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
 
         </div>
 
-        <div id="map-wrapper">
+        <div id="map-wrapper" class="cf">
+          <div id="mapATitle" class="maptitle">
+            <div class="maptitle-inner">Bridge structural condition</div>
+          </div>
+
+          <div id="mapbTitle" class="maptitle">
+            <div class="maptitle-inner">Bridge year built</div>
+          </div>
+
           <div id="mapA"></div>
           <div id="mapB"></div>
-          <div id="mapATitle" class="maptitle">Bridge structural condition</div>
-          <div id="mapbTitle" class="maptitle">Bridge year built</div>
         </div>
 
 
