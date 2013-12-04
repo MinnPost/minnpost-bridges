@@ -118,6 +118,11 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
         height: 500px;
       }
 
+      #mapA {
+        border-right: 2px solid #454545;
+        width: 49%;
+      }
+
       .maptitle {
         width: 50%;
         float: left;
@@ -208,7 +213,8 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
         var mapOptions = {
           minZoom: 6,
           maxZoom: 12,
-          scrollWheelZoom: true
+          scrollWheelZoom: true,
+          maxBounds: [[50.317408112618686, -88.70361328125], [42.779275360241904, -99.25048828124999]]
         };
 
         $(document).ready(function() {
@@ -218,11 +224,11 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
 
           // set move events to update the other map when we move this one
           mapA.on('moveend', function(e) {
-            mapB.setView(mapA.getCenter(), mapA.getZoom());
+            mapB.setView(mapA.getCenter(), mapA.getZoom(), { animate: false });
           });
 
           mapB.on('moveend', function(e) {
-            mapA.setView(mapB.getCenter(), mapB.getZoom());
+            mapA.setView(mapB.getCenter(), mapB.getZoom(), { animate: false });
           });
         });
       })(jQuery);
