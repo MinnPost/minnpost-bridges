@@ -105,12 +105,6 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
         line-height: 1.6em;
       }
 
-      /* the cursor */
-      #cursor {
-        position: absolute;
-        z-index: 100;
-      }
-
       /* Maps */
       #map-wrapper {
         width: 100%;
@@ -230,29 +224,6 @@ addthis_config = Drupal.settings.addthis.config_default; addthis_share = Drupal.
           mapB.on('moveend', function(e) {
             mapA.setView(mapB.getCenter(), mapB.getZoom());
           });
-
-          // update the location of the cursor
-          function updateCursorA(e) {
-            updateCursor(e, (window.innerWidth / 2));
-          }
-
-          function updateCursorB(e) {
-            updateCursor(e, -(window.innerWidth / 2));
-          }
-
-          function updateCursor(e, offset) {
-            // the 15 is here to position to the center of the cursor icon in, not the top left of the cursor image
-            $('#cursor').top = e.clientY - 15;
-            $('#cursor').left = offset + e.clientX - 15;
-
-            $('#cursor').css({
-              left: $('#cursor').left,
-              top: $('#cursor').top
-            });
-          }
-
-          $('#mapA').mousemove(updateCursorA);
-          $('#mapB').mousemove(updateCursorB);
         });
       })(jQuery);
     </script>
